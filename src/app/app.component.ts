@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { PeliculasService } from './services/peliculas.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'proyecto-final';
+
+  constructor(public moviesService: PeliculasService) {
+    this.moviesService.getPeliculasPopulares().subscribe(response => { console.log(response); });
+  }
+
 }
