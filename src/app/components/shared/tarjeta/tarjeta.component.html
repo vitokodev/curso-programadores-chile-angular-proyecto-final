@@ -1,0 +1,20 @@
+<div class="card puntero mb-3" (click)="verPelicula( pelicula )">
+    <img class="card-img-top" [src]="pelicula.poster | movieimg" alt="{{ pelicula.tituloOriginal }}">
+    <div class="card-img-overlay animated fadeIn fast" *ngIf="verDatosVotos">
+        <h5 class="card-title text-center">
+            {{ pelicula.titulo }} <small>({{ pelicula.fechaLanzamiento | date: 'yyyy' }})</small>
+        </h5>
+        <p class="text-center small">
+            <b>
+                {{ pelicula.votosPromedio }} <i class="far fa-star"></i> de {{ pelicula.votos }} votos |
+                <i class="fas fa-users"></i> {{ pelicula.popularidad }}
+            </b>
+        </p>
+        <p class="card-text small text-justify">
+            {{ pelicula.descripcion | slice: 0: 550 }}
+        </p>
+        <div class="text-center small">
+            <i>[ver más]</i>
+        </div>
+    </div>
+</div>

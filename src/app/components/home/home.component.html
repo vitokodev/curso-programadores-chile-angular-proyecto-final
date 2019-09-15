@@ -1,1 +1,60 @@
-<p>home works!</p>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-md-6 mb-4">
+            <div class="btn-group btn-group-lg" role="group">
+                <a
+                    class="btn"
+                    routerLink="/home/popular"
+                    routerLinkActive
+                    #rlaPopular="routerLinkActive" [ngClass]="rlaPopular.isActive ? 'btn-primary' : 'btn-outline-primary'"
+                    role="button">
+                    Populares
+                </a>
+                <a
+                    class="btn"
+                    routerLink="/home/ninos"
+                    routerLinkActive
+                    #rlaNinos="routerLinkActive" [ngClass]="rlaNinos.isActive ? 'btn-primary' : 'btn-outline-primary'"
+                    role="button">
+                    Niños
+                </a>
+                <a
+                    class="btn"
+                    routerLink="/home/teatros"
+                    routerLinkActive
+                    #rlaTeatros="routerLinkActive" [ngClass]="rlaTeatros.isActive ? 'btn-primary' : 'btn-outline-primary'"
+                    role="button">
+                    En Teatros
+                </a>
+            </div>
+        </div>
+        <div class="col-xs-12 col-md-6 mb-4 text-right" *ngIf="opcion!='teatros'">
+
+            <div class="form-group has-float-label">
+                <span>Mejores en</span>
+                <select
+                    #setFiltro
+                    class="custom-select custom-select-lg mb-3"
+                    (change)="updateList(setFiltro.value)"
+                    >
+                    <option
+                        [ngValue]="year"
+                        *ngFor="let year of ['0','2019','2018','2017','2016','2015']"
+                        [selected]="filtro==year" >
+                        {{ (year == '0' ? 'Todos los tiempos' : year) }}
+                    </option>
+                </select>
+            </div>
+        </div>
+        <div class="col-xs-12 col-md-12">
+
+            <app-loading *ngIf="loading"></app-loading>
+
+            <div class="card-columns animated fadeIn" *ngIf="!loading">
+                <app-tarjeta [pelicula]="pelicula" *ngFor="let pelicula of this.peliculas"></app-tarjeta>    
+            </div>
+
+        </div>
+    </div>
+</div>
+

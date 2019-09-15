@@ -1,1 +1,33 @@
-<p>pelicula works!</p>
+<app-loading *ngIf="loadingPelicula"></app-loading>
+
+<div class="row animated fadeIn" *ngIf="!loadingPelicula">
+
+<div class="col">
+    <div class="jumbotron">
+        <h1 class="display-4"> {{pelicula.title}} <small>({{ pelicula.release_date | date: 'yyyy' }})</small></h1>
+        <div class="float-right">
+            {{ pelicula.vote_average }} <i class="far fa-star"></i>
+            de {{ pelicula.vote_count }} votos  |
+            <i class="fas fa-users"></i> {{ pelicula.popularity / 100 | percent }}
+        </div>
+        <p class="lead">{{ pelicula.original_title }} <i>(título original)</i></p>
+        
+        <div class="card mb-3">
+            <div class="row no-gutters">
+                <div class="col-md-4">
+                <img [src]="pelicula.poster_path | domseguro" class="card-img" alt="...">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body d-flex flex-column h-100">
+                        <h5 class="card-title">Resumen</h5>
+                        <p class="card-text">{{pelicula.overview}}</p>
+                        <a routerLink="/home" class="mt-auto btn btn-lg btn-block btn-outline-primary">Volver</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>
+
+</div>

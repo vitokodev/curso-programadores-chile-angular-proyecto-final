@@ -1,14 +1,16 @@
-class PeliculaModel {
+export class PeliculaModel {
 
+  id: number;
   titulo: string;
   descripcion: string;
   tituloOriginal: string;
-  popularidad: string;
+  popularidad: number;
   votos: number;
   votosPromedio: number;
   fechaLanzamiento: Date;
+  poster: string;
 
-  constructor() {
+  constructor( ) {
     // Nothing yet
   }
 
